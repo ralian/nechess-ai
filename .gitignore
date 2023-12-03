@@ -1,3 +1,15 @@
+# SCons specific ignores
+.sconsign.dblite
+bin/
+
+# Modules
+godot-cpp/
+
+# VS
+**/.vs
+
+######################
+
 # Prerequisites
 *.d
 
