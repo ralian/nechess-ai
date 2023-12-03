@@ -2,7 +2,8 @@
 import os
 import sys
 
-env = SConscript("godot-cpp/SConstruct")
+env = SConscript("godot-cpp/SConstruct",
+    SCONS_CXX_STANDARD="c++20")
 
 env.Append(CPPPATH=["src/"])
 sources = Glob("src/*.cpp")
