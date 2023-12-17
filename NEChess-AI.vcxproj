@@ -137,6 +137,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\engine.cpp" />
+    <ClCompile Include="src\engine_standard.cpp" />
     <ClCompile Include="src\meta.cpp" />
     <ClCompile Include="src\register_types.cpp" />
     <ClCompile Include="src\state.cpp" />

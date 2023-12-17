@@ -1,6 +1,7 @@
 #include "register_types.hpp"
 
 #include "meta.hpp"
+#include "engine_standard.hpp"
 
 #include <gdextension_interface.h>
 #include <godot_cpp/core/defs.hpp>
@@ -9,15 +10,16 @@
 using namespace godot;
 
 void initialize_example_module(ModuleInitializationLevel p_level) {
-	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+	if (p_level != MODULE_INITIALIZATION_LEVEL_CORE) {
 		return;
 	}
 
 	ClassDB::register_class<NAIMeta>();
+	ClassDB::register_class<NAIEngineStandard>();
 }
 
 void uninitialize_example_module(ModuleInitializationLevel p_level) {
-	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
+	if (p_level != MODULE_INITIALIZATION_LEVEL_CORE) {
 		return;
 	}
 }
@@ -28,7 +30,7 @@ extern "C" {
 
 		init_obj.register_initializer(initialize_example_module);
 		init_obj.register_terminator(uninitialize_example_module);
-		init_obj.set_minimum_library_initialization_level(MODULE_INITIALIZATION_LEVEL_SCENE);
+		init_obj.set_minimum_library_initialization_level(MODULE_INITIALIZATION_LEVEL_CORE); // TODO is core appropriate here?
 
 		return init_obj.init();
 	}
