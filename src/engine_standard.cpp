@@ -1,5 +1,9 @@
 #include "engine_standard.hpp"
 
+#include <atomic>
+#include <chrono>
+using std::chrono::high_resolution_clock;
+
 using namespace nai::piece;
 
 void godot::NAIEngineStandard::_bind_methods()
@@ -58,5 +62,19 @@ godot::String godot::NAIEngineStandard::get_best_move()
 
 int godot::NAIEngineStandard::search_moves(double t_max)
 {
-	return 0;
+	const auto start = high_resolution_clock::now();
+	const std::chrono::duration<double> duration_max{ t_max };
+
+	std::atomic_int states_searched{ 0 }; // no concurrency now, but easier to do atomic now
+
+	do {
+		constexpr int burst = 100;
+
+		for (int i = 0; i < burst; i++);
+
+		states_searched += burst;
+
+	} while (duration_max > high_resolution_clock::now() - start);
+
+	return states_searched;
 }

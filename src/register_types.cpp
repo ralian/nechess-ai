@@ -10,7 +10,7 @@
 using namespace godot;
 
 void initialize_example_module(ModuleInitializationLevel p_level) {
-	if (p_level != MODULE_INITIALIZATION_LEVEL_CORE) {
+	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
 
@@ -19,7 +19,7 @@ void initialize_example_module(ModuleInitializationLevel p_level) {
 }
 
 void uninitialize_example_module(ModuleInitializationLevel p_level) {
-	if (p_level != MODULE_INITIALIZATION_LEVEL_CORE) {
+	if (p_level != MODULE_INITIALIZATION_LEVEL_SCENE) {
 		return;
 	}
 }
@@ -30,7 +30,7 @@ extern "C" {
 
 		init_obj.register_initializer(initialize_example_module);
 		init_obj.register_terminator(uninitialize_example_module);
-		init_obj.set_minimum_library_initialization_level(MODULE_INITIALIZATION_LEVEL_CORE); // TODO is core appropriate here?
+		init_obj.set_minimum_library_initialization_level(MODULE_INITIALIZATION_LEVEL_SCENE); // TODO is core appropriate here?
 
 		return init_obj.init();
 	}
